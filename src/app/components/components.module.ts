@@ -9,9 +9,10 @@ import { ResetPasswordComponent } from './views/reset-password/reset-password.co
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { VerificationEmailComponent } from './views/verification-email/verification-email.component';
 
 @NgModule({
-  declarations: [HomeComponent, LoginComponent, RegisterComponent, ResetPasswordComponent],
+  declarations: [HomeComponent, LoginComponent, RegisterComponent, ResetPasswordComponent, VerificationEmailComponent],
   imports: [
     CommonModule,
     ComponentsRoutingModule,

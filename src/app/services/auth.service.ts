@@ -24,16 +24,32 @@ export class AuthService {
       this.toastrService.success("Logueado");
       return result;
     } catch (error) {
-      this.toastrService.error(error, 'Error');
+      switch (error.code) {
+        case 'auth/user-not-found': {
+          this.toastrService.error('La cuenta con la que se trató de ingresar, no existe', 'Usuario inexistente');
+          break;
+        }
+
+        case 'auth/wrong-password': {
+          this.toastrService.error('La contraseña ingresada no corresponde a la de la cuenta ingresada', 'Contraseña incorrecta');
+          break;
+        }
+
+        default: {
+          this.toastrService.error('Hubo un error desconocido', 'Error');
+          break;
+        }
+      }
     }
   }
 
   async register(email: string, password: string) {
     try {
       const result = await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
-      this.toastrService.success('Ya puedes loguearte con tu usuario y contraseña', 'Registro completado');
+      this.sendVerificationEmail();
       return result;
     } catch (error) {
+      console.log(error);
       this.toastrService.error(error, 'Error');
     }
   }
@@ -45,5 +61,9 @@ export class AuthService {
     } catch (error) {
       this.toastrService.error(error, 'Error');
     }
+  }
+
+  async sendVerificationEmail(): Promise<void> {
+    return (await this.afAuth.auth.currentUser).sendEmailVerification();
   }
 }

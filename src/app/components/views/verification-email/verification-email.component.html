@@ -1,0 +1,33 @@
+<div class="row mt-3" *ngIf="user$ | async as user; else loading">
+  <div class="col-md-6 offset-md-3 col-12">
+    <div class="card">
+      <div class="card-body">
+        <h3>Gracias por registrarte</h3>
+
+        <p>The has registrado exitosamente.</p>
+
+        <p>Un <strong>mensaje</strong> se envió al <strong>correo</strong> que usaste para
+          registrarte (<strong>{{user?.email}}</strong>), que
+          contiene un <strong>link para poder verificar tu cuenta</strong>.</p>
+
+        <p>Si por alguna razón no se envió ese mensaje, puedes hacer que se reenvíe presionando el botón de abajo.</p>
+
+        <div class="form-group">
+          <a href="#" class="btn btn-primary btn-block" (click)="onResendEmail()">
+            Reenviar correo de verificación
+          </a>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+          <a href="#" class="btn btn-secondary btn-block" [routerLink]="['/home']">
+            Volver al Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <p>Cargando...</p>
+  </ng-template>

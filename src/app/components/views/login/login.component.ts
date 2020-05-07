@@ -42,13 +42,15 @@ export class LoginComponent implements OnInit {
     const { email, password } = this.form.value;
     try {
       const user = await this.authService.login(email, password);
-      if (user) {
+      if (user && user.user.emailVerified) {
         this.router.navigateByUrl("/home");
+      } else if (user) {
+        this.router.navigateByUrl('/verification-email');
       } else {
-        this.toastrService.error('Hubo un error desconocido', 'Error');
+        this.router.navigateByUrl('/register');
       }
     } catch (error) {
-      this.toastrService.error(error, 'Error');
+      console.log(error);
     }
   }
 }
