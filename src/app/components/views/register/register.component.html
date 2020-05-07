@@ -1,0 +1,47 @@
+<div class="row mt-3">
+  <div class="col-md-6 offset-md-3 col-12">
+    <div class="card">
+      <div class="card-body">
+        <h3>Register</h3>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" class="form-control"
+            placeholder="example@mail.com" formControlName="email"
+             [ngClass]="{'is-invalid':email.touched && email.invalid,'is-valid':email.valid}"/>
+            <div class="invalid-feedback d-block" *ngIf="email.touched && email.hasError('required')">
+              This input is required
+            </div>
+            <div class="invalid-feedback d-block" *ngIf="email.touched && email.hasError('email')">
+              Email entered is invalid
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Password:</label>
+            <input type="password" name="password" id="password" class="form-control"
+            placeholder="Minimum 8 characters" formControlName="password"
+            [ngClass]="{'is-invalid':password.touched && password.invalid, 'is-valid':password.valid}"/>
+            <div class="invalid-feedback d-block" *ngIf="password.touched && password.hasError('required')">
+              This input is required
+            </div>
+            <div class="invalid-feedback d-block" *ngIf="password.touched && password.hasError('minlength')">
+              The password has to be, at least, 8 characters length
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit" [disabled]="form.invalid">
+              Login
+            </button>
+          </div>
+        </form>
+
+        <hr/>
+
+        <a class="btn btn-secondary btn-sm btn-block" [routerLink]="['/login']">
+          Already have an account? Sign in!
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
