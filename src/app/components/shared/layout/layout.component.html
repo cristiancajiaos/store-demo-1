@@ -10,12 +10,12 @@
     <ul class="navbar-nav ml-auto" *ngIf="user$ | async as user; else login">
       <li class="nav-item">
         <a class="nav-link" href="#">
-          {{user?.email}}
+          <fa-icon [icon]="faUser" fixedWidth="true"></fa-icon> {{user?.email}}
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" (click)="logout()">
-          Logout
+          <fa-icon [icon]="faSignOutAlt" fixedWidth="true"></fa-icon> Logout
         </a>
       </li>
     </ul>
@@ -23,12 +23,12 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link" href="#" [routerLink]="['/login']" [routerLinkActive]="['active']">
-            Sign in
+            <fa-icon [icon]="faSignInAlt" fixedWidth="true"></fa-icon> Sign in
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" [routerLink]="['/register']" [routerLinkActive]="['active']">
-            Register
+            <fa-icon [icon]="faUserPlus" fixedWidth="true"></fa-icon> Register
           </a>
         </li>
       </ul>

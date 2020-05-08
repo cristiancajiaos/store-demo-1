@@ -6,41 +6,66 @@
 
          <form [formGroup]="form" (ngSubmit)="onLogin()">
            <div class="form-group">
-              <label for="email">Email:</label>
-              <input type="email" name="email" id="email" class="form-control"
-              placeholder="ejemplo@mail.com" formControlName="email"
-               [ngClass]="{'is-invalid':email.touched && email.invalid,'is-valid':email.valid}"/>
+              <label for="email">
+                Email:
+              </label>
+              <div class="input-group">
+                <span class="input-group-prepend">
+                  <span class="input-group-text">
+                    <fa-icon [icon]="faEnvelope" fixedWidth="true"></fa-icon>
+                  </span>
+                </span>
+                <input type="email" name="email" id="email" class="form-control" placeholder="ejemplo@mail.com"
+                  formControlName="email"
+                  [ngClass]="{'is-invalid':email.touched && email.invalid,'is-valid':email.valid}" />
+              </div>
               <div class="invalid-feedback d-block" *ngIf="email.touched && email.hasError('required')">
                 Este campo es obligatorio
               </div>
            </div>
            <div class="form-group">
-            <label for="email">Contraseña:</label>
-            <input type="password" name="password" id="password"
-              class="form-control" formControlName="password"
-               [ngClass]="{'is-invalid':password.touched && password.hasError('required'),'is-valid':password.valid}"/>
+            <label for="password">
+              Contraseña:
+            </label>
+            <div class="input-group">
+              <span class="input-group-prepend">
+                <span class="input-group-text">
+                  <fa-icon [icon]="faKey" fixedWidth="true"></fa-icon>
+                </span>
+              </span>
+              <input type="password" name="password" id="password" class="form-control" formControlName="password"
+                [ngClass]="{'is-invalid':password.touched && password.hasError('required'),'is-valid':password.valid}" />
+            </div>
               <div class="invalid-feedback d-block" *ngIf="password.touched && password.hasError('required')">
                 Este campo es obligatorio
               </div>
            </div>
            <div class="form-group">
-            <button class="btn btn-primary btn-block" type="submit" [disabled]="form.invalid">
-              Iniciar sesión
+            <button class="btn btn-success btn-block" type="submit" [disabled]="form.invalid">
+              <fa-icon [icon]="faSignInAlt" fixedWidth="true"></fa-icon> Iniciar sesión
             </button>
            </div>
          </form>
 
-         <hr />
+         <hr/>
+
+         <div class="form-group">
+           <button class="btn btn-danger btn-block" (click)="onGoogleLogin()">
+            <fa-icon [icon]="faGoogle" fixedWidth="true"></fa-icon> Iniciar sesión con Google
+           </button>
+         </div>
+
+         <hr/>
 
          <div class="row">
            <div class="col-md-6">
-            <a href="#" class="btn btn-info btn-sm btn-block mb-1" [routerLink]="['/register']">
-              Registro
+            <a href="#" class="btn btn-info btn-sm btn-block mb-3" [routerLink]="['/register']">
+              <fa-icon [icon]="faUserPlus" fixedWidth="true"></fa-icon> Registro
             </a>
            </div>
            <div class="col-md-6">
-            <a href="#" class="btn btn-secondary btn-sm btn-block mb-1" [routerLink]="['/password-reset']">
-              ¿Olvidaste la contraseña?
+            <a href="#" class="btn btn-secondary btn-sm btn-block mb-3" [routerLink]="['/password-reset']">
+              <fa-icon [icon]="faQuestion" fixedWidth="true"></fa-icon> ¿Olvidaste la contraseña?
             </a>
            </div>
          </div>

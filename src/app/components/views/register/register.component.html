@@ -6,10 +6,19 @@
 
         <form [formGroup]="form" (ngSubmit)="onRegister()">
           <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" class="form-control"
-            placeholder="ejemplo@mail.com" formControlName="email"
-             [ngClass]="{'is-invalid':email.touched && email.invalid,'is-valid':email.valid}"/>
+            <label for="email">
+              Email:
+            </label>
+            <div class="input-group">
+              <span class="input-group-prepend">
+                <span class="input-group-text">
+                  <fa-icon [icon]="faEnvelope" fixedWidth="true"></fa-icon>
+                </span>
+              </span>
+              <input type="email" name="email" id="email" class="form-control" placeholder="ejemplo@mail.com"
+                formControlName="email"
+                [ngClass]="{'is-invalid':email.touched && email.invalid,'is-valid':email.valid}" />
+            </div>
             <div class="invalid-feedback d-block" *ngIf="email.touched && email.hasError('required')">
               Este campo es obligatorio
             </div>
@@ -18,28 +27,38 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="email">Contraseña:</label>
-            <input type="password" name="password" id="password" class="form-control"
-            placeholder="Mínimo 8 characters" formControlName="password"
-            [ngClass]="{'is-invalid':password.touched && password.invalid, 'is-valid':password.valid}"/>
+            <label for="email">
+              Contraseña:
+            </label>
+            <div class="input-group">
+              <span class="input-group-prepend">
+                <span class="input-group-text">
+                  <fa-icon [icon]="faKey" fixedWidth="true"></fa-icon>
+                </span>
+              </span>
+              <input type="password" name="password" id="password" class="form-control"
+                placeholder="Mínimo 8 caracteres" formControlName="password"
+                [ngClass]="{'is-invalid':password.touched && password.invalid, 'is-valid':password.valid}" />
+            </div>
+
             <div class="invalid-feedback d-block" *ngIf="password.touched && password.hasError('required')">
               Este campo es obligatorio
             </div>
             <div class="invalid-feedback d-block" *ngIf="password.touched && password.hasError('minlength')">
-              La contrasela tiene que tener un mínimo de 8 caracteres
+              La contraseña tiene que tener un mínimo de 8 caracteres
             </div>
           </div>
           <div class="form-group">
-            <button class="btn btn-primary btn-block" type="submit" [disabled]="form.invalid">
-              Registrarse
+            <button class="btn btn-success btn-block" type="submit" [disabled]="form.invalid">
+              <fa-icon [icon]="faUserPlus" fixedWidth="true"></fa-icon> Registrarse
             </button>
           </div>
         </form>
 
         <hr/>
 
-        <a class="btn btn-secondary btn-sm btn-block" [routerLink]="['/login']">
-          ¿Ya tienes una cuenta? ¡Inicia sesión!
+        <a class="btn btn-primary btn-sm btn-block" [routerLink]="['/login']">
+          <fa-icon [icon]="faSignInAlt" fixedWidth="true"></fa-icon> ¿Ya tienes una cuenta? ¡Inicia sesión!
         </a>
       </div>
     </div>

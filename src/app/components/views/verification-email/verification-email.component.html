@@ -4,7 +4,7 @@
       <div class="card-body">
         <h3>Gracias por registrarte</h3>
 
-        <p>The has registrado exitosamente.</p>
+        <p>Te has registrado exitosamente.</p>
 
         <p>Un <strong>mensaje</strong> se envió al <strong>correo</strong> que usaste para
           registrarte (<strong>{{user?.email}}</strong>), que
@@ -13,16 +13,16 @@
         <p>Si por alguna razón no se envió ese mensaje, puedes hacer que se reenvíe presionando el botón de abajo.</p>
 
         <div class="form-group">
-          <a href="#" class="btn btn-primary btn-block" (click)="onResendEmail()">
-            Reenviar correo de verificación
+          <a href="#" class="btn btn-success btn-block" (click)="onResendEmail()">
+            <fa-icon [icon]="faEnvelope" fixedWidth="true"></fa-icon> Reenviar correo de verificación
           </a>
         </div>
 
         <hr />
 
         <div class="form-group">
-          <a href="#" class="btn btn-secondary btn-block" [routerLink]="['/home']">
-            Volver al Home
+          <a href="#" class="btn btn-primary btn-block" [routerLink]="['/home']">
+            <fa-icon [icon]="faHome" fixedWidth="true"></fa-icon> Volver al Home
           </a>
         </div>
       </div>

@@ -4,6 +4,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { IconDefinition, faEnvelope, faKey, faSignInAlt, faUserPlus, faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +20,13 @@ export class LoginComponent implements OnInit {
 
   email = new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required]);
+
+  faEnvelope: IconDefinition;
+  faKey: IconDefinition;
+  faSignInAlt: IconDefinition;
+  faUserPlus: IconDefinition;
+  faQuestion: IconDefinition;
+  faGoogle: IconDefinition;
 
   constructor(
     private authService: AuthService,
@@ -36,6 +45,13 @@ export class LoginComponent implements OnInit {
       email: this.email,
       password: this.password
     });
+
+    this.faEnvelope = faEnvelope;
+    this.faKey = faKey;
+    this.faSignInAlt = faSignInAlt;
+    this.faUserPlus = faUserPlus;
+    this.faQuestion = faQuestion;
+    this.faGoogle = faGoogle;
   }
 
   async onLogin() {
@@ -53,4 +69,13 @@ export class LoginComponent implements OnInit {
       console.log(error);
     }
   }
+
+  onGoogleLogin() {
+    try {
+      this.authService.loginGoogle();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 }

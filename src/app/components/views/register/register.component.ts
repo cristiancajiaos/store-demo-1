@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { IconDefinition, faEnvelope, faKey, faUserPlus, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-register',
@@ -18,6 +19,11 @@ export class RegisterComponent implements OnInit {
 
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(8)]);
+
+  faEnvelope: IconDefinition;
+  faKey: IconDefinition;
+  faUserPlus: IconDefinition;
+  faSignInAlt: IconDefinition;
 
   constructor(
     private authService: AuthService,
@@ -36,6 +42,11 @@ export class RegisterComponent implements OnInit {
       email: this.email,
       password: this.password
     });
+
+    this.faEnvelope = faEnvelope;
+    this.faKey = faKey;
+    this.faUserPlus = faUserPlus;
+    this.faSignInAlt = faSignInAlt;
   }
 
   async onRegister() {

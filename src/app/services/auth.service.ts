@@ -66,4 +66,20 @@ export class AuthService {
   async sendVerificationEmail(): Promise<void> {
     return (await this.afAuth.auth.currentUser).sendEmailVerification();
   }
+
+  async resetPassword(email: string) {
+    try {
+      return this.afAuth.auth.sendPasswordResetEmail(email);
+    } catch (error) {
+      this.toastrService.error(error, 'Error');
+    }
+  }
+
+  async loginGoogle() {
+    try {
+      return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    } catch (error) {
+      this.toastrService.error(error, 'Error');
+    }
+  }
 }
